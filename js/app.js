@@ -6,6 +6,12 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.setInitialPosition();
+}
+Enemy.prototype.setInitialPosition = function(dt) {
+    row = getRandomInt(1,4);
+    this.y = row * 82;
+    this.x = 0;
 }
 
 // Update the enemy's position, required method for game
@@ -100,3 +106,9 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
