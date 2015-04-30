@@ -3,5 +3,6 @@ Pages Referenced While Working on This Project:
 
 https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub
 https://intellij-support.jetbrains.com/entries/62745413-Mac-OSX-can-t-start-Git-after-updating-Mac-OS-XCode
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
 
