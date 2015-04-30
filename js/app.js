@@ -49,6 +49,24 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function (keyCode){
   console.log (keyCode);
   
+  if ('up' === keyCode) {
+    if (this.y > 81){
+      this.y = this.y - 82;
+    }
+  } else if ('down' === keyCode) {
+    if (this.y < 329){
+      this.y = this.y + 82;
+    }
+  } else if ('left' === keyCode) {
+    if (this.x > 99){
+      this.x = this.x - 100;
+    }
+  } else if ('right' === keyCode) {
+    if (this.x < 301){
+      this.x = this.x + 100;
+    }
+  } 
+  
 }
 
 // Now instantiate your objects.
