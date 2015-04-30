@@ -7,11 +7,22 @@ var Enemy = function() {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.setInitialPosition();
+    this.setInitialSpeed();
 }
+
+//set the initial position of an enemy
+//enemies can start on one of three different rows
 Enemy.prototype.setInitialPosition = function(dt) {
+    //pick a row to start
     row = getRandomInt(1,4);
+
+    //set the y position based on the row
     this.y = row * 82;
     this.x = 0;
+}
+//speed is in terms of pixels per tick
+Enemy.prototype.setInitialSpeed = function(dt) {
+    this.speed = getRandomInt(30, 121);
 }
 
 // Update the enemy's position, required method for game
@@ -20,6 +31,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x = this.x + (this.speed * dt)
 }
 
 // Draw the enemy on the screen, required method for game
