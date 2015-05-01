@@ -20,7 +20,7 @@ Enemy.prototype.setInitialPosition = function() {
     this.y = row * 82;
     this.x = 0;
 }
-//speed is in terms of pixels per tick
+
 Enemy.prototype.setInitialSpeed = function() {
     this.speed = getRandomInt(30, 151);
 }
@@ -36,6 +36,28 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 499){
       this.setInitialPosition();
       this.setInitialSpeed();
+    }
+    this.detectCollision();
+}
+
+//Determine if the enemy touched the player
+Enemy.prototype.detectCollision = function() {
+    //if the player and enemy are in the smae row there might be a collision
+    if (this.y === player.y){
+        enemyRightEdge = this.x + 101;
+        playerRightEdge = player.x + 101;
+
+        //check for over lap between enemy and player x coordinates
+        if ((enemyRightEdge >= player.x) && 
+            (enemyRightEdge <= playerRightEdge)){
+            //enemy has hit player from the right
+            player.setInitialPosition();
+        } else if ((playerRightEdge >= this.x) &&
+                  (this.x > player.x )){
+            //player has tried to step on enemy
+            player.setInitialPosition();
+        } 
+
     }
 }
 
