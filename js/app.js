@@ -12,7 +12,7 @@ var Enemy = function() {
 
 //set the initial position of an enemy
 //enemies can start on one of three different rows
-Enemy.prototype.setInitialPosition = function(dt) {
+Enemy.prototype.setInitialPosition = function() {
     //pick a row to start
     row = getRandomInt(1,4);
 
@@ -21,8 +21,8 @@ Enemy.prototype.setInitialPosition = function(dt) {
     this.x = 0;
 }
 //speed is in terms of pixels per tick
-Enemy.prototype.setInitialSpeed = function(dt) {
-    this.speed = getRandomInt(30, 121);
+Enemy.prototype.setInitialSpeed = function() {
+    this.speed = getRandomInt(30, 151);
 }
 
 // Update the enemy's position, required method for game
@@ -32,6 +32,11 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + (this.speed * dt)
+
+    if (this.x > 499){
+      this.setInitialPosition();
+      this.setInitialSpeed();
+    }
 }
 
 // Draw the enemy on the screen, required method for game
@@ -52,9 +57,8 @@ var Player = function() {
 // Update the player's position, required method for game
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+
+    //if player reaches the water, set player to starting position
     if (this.y === 0){
       this.setInitialPosition();
     }
